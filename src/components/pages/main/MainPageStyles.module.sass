@@ -1,0 +1,89 @@
+@import '../../../Variables'
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap')
+
+.main_page
+  .main_page_content_wrapper
+   padding: 100px 20%
+   @media screen and (max-width: $mobileMax)
+     padding: 0 20px
+  .mainPage_title
+    display: flex
+    flex-direction: column
+    width: 100%
+    font-family: 'Cormorant Garamond', serif
+    font-size: 1.8em
+    font-weight: 700
+    @media screen and (max-width: $mobileMax)
+      font-size: 1.2em
+    .main_page_title_text
+      color: $darkMain
+      font-size: 1.6em
+
+    .main_page_title_description
+      margin-top: 5px
+    ul
+
+      margin-top: 10px
+      margin-left: 22px
+
+      li
+        color: $gold
+  .stocks
+    margin-top: 50px
+    overflow: hidden
+    //margin: -10px -40px !important
+    flex-direction: column
+    display: flex
+    button
+      margin-top: 40px
+    .stockTitle
+      color: $darkMain
+      padding: 40px
+      font-family: 'Cormorant Garamond', serif
+      font-size: 1.7em
+      font-weight: 700
+      width: 100%
+      text-align: center
+      @media screen and (max-width: $mobileMax)
+        padding: 15px
+  .articleBlock
+    display: flex
+    flex-direction: column
+    border-top: 5px solid rgba(241,241,243,241)
+    margin-top: 60px
+    padding: 30px 0
+    font-family: 'Cormorant Garamond', serif
+
+    .articleTitle
+      font-size: 1.7em
+      font-weight: 700
+      text-align: center
+      width: 100%
+
+    .articles
+      margin-top: 100px
+      display: grid
+      grid-row-gap: 80px
+
+    .readmore
+      width: 100%
+      margin-top: 100px
+      display: flex
+      justify-content: center
+
+  .feedBack
+    font-family: 'Montserrat', sans-serif
+    background: #333336
+    padding: 5% 20%
+    display: grid
+    grid-row-gap: 30px
+    width: 100%
+    box-sizing: border-box
+    @media screen and (max-width: $mobileMax)
+      padding: 5% 15%
+    .feedBackTitle
+      color: $gold
+      font-weight: bolder
+      letter-spacing: 1px
+      text-align: center
+      font-size: 2em

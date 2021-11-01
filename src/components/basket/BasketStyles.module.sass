@@ -1,0 +1,132 @@
+@import 'src/Variables.sass'
+.mobile
+  width: 100%
+  background: white
+  border-top: 2px solid $gold
+  position: fixed
+  color: $gold
+  bottom: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 10000
+  padding: 15px 0
+  box-sizing: border-box
+  .mobileWrapper
+    position: relative
+    .orderAmount
+      left: 28px
+      position: absolute
+      font-size: 0.7em
+      font-weight: bolder
+      padding: 3px 5px
+      box-sizing: border-box
+      background: $red
+      color: white
+      border-radius: 50%
+
+.basketWrapper
+  width: 100%
+  z-index: 10000
+  height: 100%
+  background: rgba(0, 0, 0, .5)
+  position: absolute
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+
+  @media screen and (max-width: $mobileMax)
+    justify-content: start
+    align-items: start
+
+  .basket
+    font-family: 'Montserrat', sans-serif
+    //z-index: 1500
+    position: fixed
+    top: 25%
+    left: 35%
+    width: 600px
+    height: 500px
+    background: white
+    border: 1px solid $darkMain
+    border-radius: 4px
+    padding: 10px 20px
+
+    @media screen and (max-width: $mobileMax)
+      padding: 0
+      top: 0 !important
+      left: 0 !important
+      width: 100%
+      height: 100%
+      border: none
+
+    @media screen and (max-width: $HD)
+      left: 30%
+      top: 20%
+
+    .header
+      cursor: pointer
+      border-bottom: 1px solid $borderBottom
+      padding: 5px 7px
+      box-sizing: border-box
+      display: flex
+      justify-content: space-between
+      align-items: center
+      font-weight: bolder
+
+    .noContent
+      justify-content: space-between
+      height: 80%
+
+    .content
+      margin-top: 15px
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      height: 85%
+
+      .productList
+        display: grid
+        grid-row-gap: 5px
+        overflow: scroll
+        @media screen and (max-width: $mobileMax)
+          padding: 5px 7px
+
+        .order
+          display: flex
+          border-top: 1px solid $borderBottom
+          border-bottom: 1px solid $borderBottom
+          justify-content: space-between
+          align-items: center
+          padding: 7px 0
+          @media screen and (max-width: $mobileMax)
+            font-size: 0.8em
+          .costBlock
+
+            .cost
+              text-decoration: line-through
+
+            .stockCost
+              color: $gold
+          img
+            width: 100px
+            height: 70px
+
+      .buttons
+        display: flex
+        justify-content: space-between
+        @media screen and (max-width: $mobileMax)
+          justify-content: space-around !important
+        button
+          margin-top: 20px
+          width: 200px
+          @media screen and (max-width: $mobileMax)
+            width: 150px
+      .total
+        margin-left: 20px
+      .noOrders
+        color: $gray
+        text-align: center
+        font-weight: bolder
+        font-size: 1.3em

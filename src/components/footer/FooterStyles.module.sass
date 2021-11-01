@@ -1,0 +1,28 @@
+@import 'src/Variables.sass'
+
+footer
+  font-family: 'Montserrat', sans-serif
+  background: #333336
+  padding: 50px 100px
+  box-sizing: border-box
+  font-weight: bolder
+  display: flex
+  justify-content: space-between
+  align-items: center
+  @media screen and (max-width: $mobileMax)
+    padding: 30px
+  .footerBlock
+    .footerBlockTitle
+      font-size: 1.4em
+      color: white
+      @media screen and (max-width: $mobileMax)
+        font-size: 1.1em
+    .footerBlockContent
+      display: flex
+      flex-direction: column
+      .footerBlockContentItem
+        @media screen and (max-width: $mobileMax)
+          font-size: 1em
+        font-size: 1.3em
+        line-height: 30px
+        color: $gold

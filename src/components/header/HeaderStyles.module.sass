@@ -1,0 +1,61 @@
+@import 'src/Variables.sass'
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap')
+
+.mobileHeader
+  font-family: 'Montserrat', sans-serif
+  padding: 10px 20px
+  .burger
+    display: flex
+    justify-content: end
+    align-items: center
+    padding: 20px 10px
+    box-sizing: border-box
+    border-bottom: 1px solid #b8860b
+    width: 100%
+    height: 60px
+    position: relative
+  .nav_items
+    top: 0
+    position: absolute
+    height: 100%
+    z-index: 100
+    width: 100%
+    right: 0
+    background: white
+    padding: 10px 20px
+    box-sizing: border-box
+    color: $gold
+    .nav_items_header
+      display: flex
+      justify-content: space-between
+      align-items: center
+      border-bottom: 1px solid $gold
+    .links
+      display: flex
+      flex-direction: column
+      margin-top: 20px
+      a
+        padding: 10px 0
+        color: $darkMain
+.header
+  font-family: 'Montserrat', sans-serif
+  display: flex
+  z-index: 100
+  background: white
+  justify-content: space-between
+  padding: 20px 20%
+  box-sizing: border-box
+  width: 100%
+  height: 60px
+  border-bottom: 1px solid #b8860b
+  @media screen and (max-width: $HD)
+    padding: 20px 10%
+  nav
+    color: $gold
+    font-weight: 700
+    font-size: 1em
+    cursor: pointer
+
+
+
+

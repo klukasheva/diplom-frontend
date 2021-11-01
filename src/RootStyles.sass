@@ -1,0 +1,35 @@
+@import 'src/Variables.sass'
+
+*
+  padding: 0
+  margin: 0
+
+a
+  text-decoration: none
+  color: initial
+.App
+  font-size: 14px
+  position: relative
+  width: 100%
+  .pages
+    //padding: 100px 20%
+    @media screen and (max-width: $HD)
+      margin-top: 30px
+  .iconWrapper
+    position: fixed
+    left: 30px
+    top: 40%
+    .ordersAmount
+      left: 46px
+      position: absolute
+      font-size: 0.7em
+      font-weight: bolder
+      padding: 3px 5px
+      box-sizing: border-box
+      background: $red
+      color: white
+      border-radius: 50%
+
+    .basket_icon
+      color: #6f6f6f
+      cursor: pointer

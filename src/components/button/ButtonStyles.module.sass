@@ -1,0 +1,52 @@
+@import 'src/Variables.sass'
+
+.button
+  border-radius: 4px
+  display: flex
+  justify-content: center
+  align-items: center
+  background: white
+  cursor: pointer
+  &.DEFAULT_BUTTON
+    min-width: 250px
+    padding: 13px 10px
+    font-size: 1.3em
+    color: $gold
+    border: 1px solid $gold
+    &:hover
+      color: white
+      background: $gold
+  &.DEFAULT
+    min-width: 250px
+    padding: 13px 10px
+    font-size: 1.3em
+
+  &.SMALL
+    width: 100px
+    padding: 8px 6px
+    font-size: 1.1em
+
+  &.GOLD
+    color: $gold
+    border: 1px solid $gold
+    &:hover
+      color: white
+      background: $gold
+  &.ERROR
+    color: $red
+    border: 1px solid $red
+    &:hover
+      background: $red
+      color: white
+  &.GREEN
+    color: $green
+    border: 1px solid $green
+    &:hover
+      color: white
+      background: $green
+  &.BLUE
+    color: $blue
+    border: 1px solid $blue
+    &:hover
+      color: white
+      background: $blue
