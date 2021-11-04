@@ -1,0 +1,65 @@
+@import '../../../Variables'
+
+.placement
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  padding: 0px 15%
+  box-sizing: border-box
+  .history
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    padding: 15px
+    box-sizing: border-box
+    .titleHistory
+      color: $gold
+      font-size: 1.3em
+      font-weight: bold
+    .historyContent
+      color: $darkMain
+
+.leaders
+  //min-height: 70vh
+  width: 100%
+  display: grid
+  grid-row-gap: 30px
+  justify-content: center
+  padding: 30px
+  box-sizing: border-box
+  align-items: center
+  min-height: 100vh
+  .leadersItem
+    display: flex
+    flex-direction: column
+    border-top: 2px solid $gold
+    border-bottom: 2px solid $gold
+    padding: 10px
+    box-sizing: border-box
+    position: relative
+    &:before
+      content: ' '
+      width: 2px
+      background: $gold
+      height: 30%
+      position: absolute
+      top: 0
+      left: 0
+    &:after
+      content: ' '
+      width: 2px
+      background: $gold
+      height: 30%
+      position: absolute
+      bottom: 0
+      right: 0
+    .leaderName
+      font-size: 1.3em
+      color: $gold
+      font-weight: bold
+    .leaderWork
+      color: $darkMain
+    .leaderPhone
+      color: $darkMain

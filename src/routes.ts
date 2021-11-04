@@ -5,6 +5,7 @@ export const routes = {
     offers: '/offers',
     leaders: '/leaders',
     news: '/news',
-    placement: '/placement'
+    placement: '/placement',
+    order: '/order'
 
 }

@@ -1,10 +1,5 @@
 import {ProductSlideI} from "./components/slides/ProductSlide";
 
-export type Tag = {
-    id: number,
-    name: string
-}
-
 export interface AdditionalImage{
     id: number,
     link: string

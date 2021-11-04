@@ -10,14 +10,14 @@
     display: flex
     flex-direction: column
     width: 100%
-    font-family: 'Cormorant Garamond', serif
+
     font-size: 1.8em
     font-weight: 700
     @media screen and (max-width: $mobileMax)
       font-size: 1.2em
     .main_page_title_text
       color: $darkMain
-      font-size: 1.6em
+      font-size: 1.4em
 
     .main_page_title_description
       margin-top: 5px
@@ -28,6 +28,7 @@
 
       li
         color: $gold
+        font-size: 0.8em
   .stocks
     margin-top: 50px
     overflow: hidden
@@ -37,28 +38,59 @@
     button
       margin-top: 40px
     .stockTitle
-      color: $darkMain
+      color: $gold
       padding: 40px
-      font-family: 'Cormorant Garamond', serif
       font-size: 1.7em
       font-weight: 700
       width: 100%
       text-align: center
       @media screen and (max-width: $mobileMax)
         padding: 15px
+  .providers
+    border-top: 2px solid $gold
+    border-bottom: 2px solid $gold
+    margin-top: 100px
+    display: flex
+    font-weight: 700
+    justify-content: space-between
+    padding: 40px 15%
+    box-sizing: border-box
+    align-items: center
+    position: relative
+    @media screen and (max-width: $mobileMax)
+      flex-direction: column
+      button
+         margin-top: 15px
+    &:before
+      content: ' '
+      width: 2px
+      background: $gold
+      height: 30%
+      position: absolute
+      top: 0
+      left: 0
+    &:after
+      content: ' '
+      width: 2px
+      background: $gold
+      height: 30%
+      position: absolute
+      bottom: 0
+      right: 0
+    div
+      font-size: 1.5em
   .articleBlock
     display: flex
     flex-direction: column
-    border-top: 5px solid rgba(241,241,243,241)
     margin-top: 60px
     padding: 30px 0
-    font-family: 'Cormorant Garamond', serif
 
     .articleTitle
       font-size: 1.7em
       font-weight: 700
       text-align: center
       width: 100%
+      color: $gold
 
     .articles
       margin-top: 100px
@@ -72,7 +104,6 @@
       justify-content: center
 
   .feedBack
-    font-family: 'Montserrat', sans-serif
     background: #333336
     padding: 5% 20%
     display: grid

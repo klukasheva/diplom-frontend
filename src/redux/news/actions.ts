@@ -1,5 +1,5 @@
 import {ActionType, createAsyncAction} from "typesafe-actions";
-import {ArticlePromoT} from "../../components/article/ArticlePromo";
+import {ArticlePromoT} from "../../components/pages/news/NewsPromo";
 
 export const NewsActions = {
     getList: createAsyncAction(
@@ -11,7 +11,7 @@ export const NewsActions = {
         'news/GET_NEWS_REQUEST',
         'news/GET_NEWS_SUCCESS',
         'news/GET_NEWS_FAILURE'
-    )<number, ArticlePromoT, null>()
+    )<{id: number}, ArticlePromoT, null>()
 }
 
 export type NewsActionsType = ActionType<typeof NewsActions>

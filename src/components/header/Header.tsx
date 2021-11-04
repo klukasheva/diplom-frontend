@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 export const Header:FunctionComponent=()=>{
     return(
         <header className={styles.header}>
-            <div>
-                Для поставщиков
-            </div>
             {MENU_ITEMS.map((item,index)=>
                 <Link to={item.link} key={item.key}>
                     {item.key}

@@ -1,0 +1,63 @@
+@import '../../../Variables'
+
+.newsWrapper
+  display: flex
+  justify-content: center
+  align-items: start
+  width: 100%
+  min-height: calc(100vh - 200px)
+
+  .news
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-direction: column
+    width: 60%
+    padding: 20px
+    box-sizing: border-box
+    @media screen and (max-width: $mobileMax)
+      width: 100%
+    article
+      margin-top: 30px
+
+.pageWrapper
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  .page
+    margin-top: 20px
+    border: 1px solid $borderBottom
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    width: 50%
+    padding: 20px
+    box-sizing: border-box
+    @media screen and (max-width: $mobileMax)
+      width: 100%
+    .titleBlock
+      width: 100%
+      margin-top: 20px
+      padding: 10px 20%
+      display: flex
+      justify-content: space-between
+      align-items: center
+      .title
+        font-size: 1.3em
+        font-weight: bolder
+      .creationDate
+        font-weight: bold
+    img
+      margin-top: 20px
+      width: 100%
+      height: 450px
+      object-fit: cover
+    .content
+      font-size: 1.2em
+      margin-top: 30px
+    .author
+      margin-top: 20px
+      font-size: 1.6em
+      font-weight: 700

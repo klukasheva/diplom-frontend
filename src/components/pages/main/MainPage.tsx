@@ -1,21 +1,24 @@
 import * as React from 'react'
+import {useEffect, useState} from 'react'
 import styles from './MainPageStyles.module.sass'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {Button, ButtonColor, ButtonSize} from "../../button/Button";
-import {ArticlePromo} from "../../article/ArticlePromo";
+import {NewsPromo} from "../news/NewsPromo";
 import {takeLeft} from 'fp-ts/lib/Array';
 import {MapWithMarker} from "./MapWithMarker";
 import {ProductSlide} from "../../slides/ProductSlide";
 import {Input, Textarea} from "../../input/Input";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux";
-import {useEffect} from "react";
 import {ProductActions} from "../../../redux/product/actions";
 import {NewsActions} from "../../../redux/news/actions";
 import {useHistory} from "react-router";
 import {routes} from "../../../routes";
+import {ProductModalAction} from "../../../redux/modal";
+import {useSetState} from "react-use";
+import {config, url} from "../../../apiConfig";
 
 const settings = {
     dots: false,
@@ -38,17 +41,37 @@ const settings = {
     ]
 };
 
-export const MainPage = () =>{
+export const MainPage = () => {
     const dispatch = useDispatch();
     const articles = useSelector((state: RootState) => state.NewsReducer.list);
     const slides = useSelector((state: RootState) => state.ProductReducer.productList);
     const history = useHistory();
+    const [feedbackData, setFeedbackData] = useSetState({username: '', phoneNumber: '', text: ''})
+    const [feedbackMessage, setFeedbackMessage] = useState<{ context: string, message: string }>()
 
-    useEffect(()=>{
+    const submit =  async () => {
+        try {
+            await fetch(url(`${config.endpoints.feedback}`), {
+                body: JSON.stringify(feedbackData),
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json'
+                }
+            }).then(res=>{
+                res.status === 201 && setFeedbackMessage({context: 'success', message: 'Ваше сообщение было успешно отправлено!'})
+                }
+            )
+        }
+        catch (e) {
+            console.error(e,'e')
+            setFeedbackMessage({context: 'error', message: 'Произошла ошибка при отправке сообщения'})
+        }
+    }
+    useEffect(() => {
         dispatch(ProductActions.getList.request(undefined));
         dispatch(NewsActions.getList.request())
-    },[dispatch])
-    return(
+    }, [dispatch])
+    return (
         <div className={styles.main_page}>
             <div className={styles.main_page_content_wrapper}>
                 <div className={styles.mainPage_title}>
@@ -83,46 +106,66 @@ export const MainPage = () =>{
                 </div>
                 <div className={styles.stocks}>
                     <div className={styles.stockTitle}>Акции и новинки</div>
-                    {slides.length>0 &&
+                    {slides.length > 0 &&
                     <Slider {...settings}>
-                        {slides.map(slide=>
-                            <ProductSlide {...slide}/>
+                        {slides.map(slide =>
+                            <ProductSlide {...slide} key={slide.id}/>
                         )}
                     </Slider>
                     }
-                    <Button onClick={()=>history.push(routes.products)} content={'Все товары'} alignSelf={'center'}/>
+                    <Button onClick={() => history.push(routes.products)} content={'Все товары'} alignSelf={'center'}/>
+                </div>
+                <div className={styles.providers}>
+                    <div>
+                        Хотите предложить свои товары нам?
+                    </div>
+                    <Button onClick={() => dispatch(ProductModalAction({isOpen: true}))} content={'Вам сюда!'}
+                            color={ButtonColor.GOLD_BG} size={ButtonSize.DEFAULT}/>
                 </div>
                 <div className={styles.articleBlock}>
                     <div className={styles.articleTitle}>
                         Новости
                     </div>
                     <div className={styles.articles}>
-                        {takeLeft(15)(articles).map(article=>
-                            <ArticlePromo {...article} key={article.id}/>
+                        {takeLeft(15)(articles).map(article =>
+                            <NewsPromo {...article} key={article.id}/>
                         )}
                     </div>
                     <div className={styles.readmore}>
-                        <Button onClick={()=>console.log('todo')} content={'Читать другие'}/>
+                        <Button onClick={() => history.push(routes.news)} content={'Читать другие'}/>
                     </div>
                 </div>
             </div>
             <div className={styles.map}>
-                <MapWithMarker containerElement={<div style={{ height: `400px` }} />}
-                               mapElement={<div style={{ height: `100%` }} />}
+                <MapWithMarker containerElement={<div style={{height: `400px`}}/>}
+                               mapElement={<div style={{height: `100%`}}/>}
                                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                               loadingElement={<div style={{ height: `100%` }} />}
+                               loadingElement={<div style={{height: `100%`}}/>}
                 />
 
             </div>
-            <form className={styles.feedBack}>
+            <div className={styles.feedBack}>
                 <h2 className={styles.feedBackTitle}>
                     Оставьте своё мнение или предложение и мы вам перезвоним
                 </h2>
-                <Input onChange={()=>console.log('name')} value={''} placeholder={'Введите ваше имя'} required={true}/>
-                <Input onChange={()=>console.log('phone')} value={''} placeholder={'Номер телефона'} required={false}/>
-                <Textarea onChange={() => console.log('desciprtion')} value={''} placeholder={'Опишите проблему'} required={true}/>
-                <Button onClick={()=>console.log('submit')} content={'Отправить сообщение'} type={'submit'} color={ButtonColor.GOLD} size={ButtonSize.DEFAULT}/>
-            </form>
+                <Input onChange={(value) => setFeedbackData({username: value})}
+                       value={feedbackData.username}
+                       color={'white'}
+                       placeholder={'Введите ваше имя'} required={true}/>
+                <Input onChange={(value) => setFeedbackData({phoneNumber: value})}
+                       value={feedbackData.phoneNumber}
+                       color={'white'}
+                       placeholder={'Номер телефона'} required={false}/>
+                <Textarea onChange={(value) => setFeedbackData({text: value})}
+                          value={feedbackData.text}
+                          color={'white'}
+                          placeholder={'Опишите проблему'} required={true}/>
+                <Button onClick={() => submit()}
+                        type={"button"}
+                        content={!feedbackMessage ? 'Отправить сообщение' : feedbackMessage.message}
+                        color={!feedbackMessage? ButtonColor.GOLD_BG : feedbackMessage.context === 'success' ? ButtonColor.GREEN_BG : ButtonColor.ERROR_BG}
+                        size={ButtonSize.DEFAULT}/>
+            </div>
         </div>
     )
 }

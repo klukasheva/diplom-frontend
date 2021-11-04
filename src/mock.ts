@@ -6,16 +6,8 @@ export const MENU_ITEMS = [
         link: routes.root
     },
     {
-        key: 'Контакты',
-        link: routes.contacts
-    },
-    {
         key: 'Продукция',
         link: routes.products
-    },
-    {
-        key: 'Вакансии',
-        link: routes.offers
     },
     {
         key: 'Руководители',

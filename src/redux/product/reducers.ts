@@ -5,10 +5,19 @@ import {combineReducers} from "redux";
 
 export const ProductReducer = combineReducers({
     productList:createReducer<ProductSlideI[], ProductActionsType>([])
-        .handleAction(ProductActions.getList.success, (state ,action) => action.payload),
-    product: createReducer<ProductSlideI, ProductActionsType>({cost: 0, id: 0, image: "", stockCost: 0, title: "", description:"", category:{id: 0, title:''}})
-        .handleAction(ProductActions.getProduct.success, (state,action)=> action.payload)
+        .handleAction(ProductActions.getList.success, (_ ,action) => action.payload),
+    product: createReducer<ProductSlideI, ProductActionsType>(<ProductSlideI>{
+        cost: 0,
+        id: 0,
+        image: "",
+        stockCost: 0,
+        title: "",
+        description: "",
+        category: {id: 0, title: '', phoneNumber: ''}
+    })
+        .handleAction(ProductActions.getProduct.success, (_,action)=> action.payload)
 })
 
 export const CategoryReducer = createReducer<CategoryType[], CategoryActionsType>([])
-.handleAction(CategoryActions.success,(state,action)=>action.payload)
+.handleAction(CategoryActions.success,(_,action)=>action.payload)
+

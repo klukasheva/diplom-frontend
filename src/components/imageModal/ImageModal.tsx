@@ -6,7 +6,7 @@ import Icon from "@mdi/react";
 import {mdiClose} from "@mdi/js";
 import {url} from "../../apiConfig";
 import styles from './ImageModalStyles.module.sass'
-import {ImageModalAction} from "../../redux/image";
+import {ImageModalAction} from "../../redux/modal";
 
 
 

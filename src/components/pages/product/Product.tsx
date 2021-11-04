@@ -9,7 +9,7 @@ import {useHistory, useParams} from "react-router";
 import {Button, ButtonColor, ButtonSize} from "../../button/Button";
 import {BasketActions} from "../../../redux/basket/actions";
 import {useIsMobile} from "../../../hooks";
-import {ImageModalAction} from "../../../redux/image";
+import {ImageModalAction} from "../../../redux/modal";
 import {CategoryTag} from "./CategoryTag";
 import {ProductSlideI} from "../../slides/ProductSlide";
 import {routes} from "../../../routes";
@@ -31,7 +31,7 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                         <div className={styles.title}>
                             {props.data.title}
                         </div>
-                        <img src={url((`files/${props.data.image}`))} className={styles.mainImage}/>
+                           <img src={url((`files/${props.data.image}`))} className={styles.mainImage}/>
                         <div className={styles.additionalImages}>
                             {props.data.additionalImages?.map(image =>
                                 <img src={url((`files/${image.link}`))}
@@ -45,7 +45,7 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                             )}
                         </div>
                         <div className={styles.description}>
-                            {props.data.description}
+                            {props.data.description.substring(0,300)}
                         </div>
                         <CategoryTag {...props.data.category} onClick={(id)=> history.push(`${routes.products}?category=${id}`)}/>
                         <div className={styles.price}>
@@ -57,11 +57,18 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                                     {props.data.stockCost} руб
                                 </div>
                             </div>
-                            <Button onClick={() => dispatch(BasketActions.pushBasketAction(props.data as ProductSlideI))}
-                                    content={'В корзину'}
-                                    alignSelf={isMobile ? 'center' : 'start'}
-                                    size={ButtonSize.DEFAULT}
-                                    color={ButtonColor.BLUE}/>
+                            <div className={styles.buttons}>
+                                <Button onClick={() =>  history.push(`${routes.products}/${props.data?.id}`)}
+                                        content={'Перейти к товару'}
+                                        alignSelf={isMobile ? 'center' : 'start'}
+                                        size={ButtonSize.DEFAULT}
+                                        color={ButtonColor.GREEN_BG}/>
+                                <Button onClick={() => dispatch(BasketActions.pushBasketAction(props.data as ProductSlideI))}
+                                        content={'В корзину'}
+                                        alignSelf={isMobile ? 'center' : 'start'}
+                                        size={ButtonSize.DEFAULT}
+                                        color={ButtonColor.BLUE}/>
+                            </div>
                         </div>
                     </div>
                 </div>

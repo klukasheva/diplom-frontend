@@ -10,6 +10,9 @@ export const BasketActions = {
     removeFromBasketAction: createAction(
         'basket/REMOVE_FROM_BASKET_ITEM'
     )<number>(),
+    clearBasket: createAction(
+        'basket/CLEAR_BASKET_ACTION'
+    )<undefined>(),
     submitBasketAction : createAsyncAction(
         'basket/SUBMIT_BASKET_REQUEST',
         'basket/SUBMIT_BASKET_SUCCESS',

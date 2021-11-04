@@ -11,7 +11,7 @@ import {routes} from "../../routes";
 import {AdditionalImage} from "../../types";
 import {CategoryType} from "../../redux/product/actions";
 
-export interface ProductSlideI{
+export interface ProductSlideI {
     id: number,
     image: string
     title: string,
@@ -19,13 +19,14 @@ export interface ProductSlideI{
     stockCost: number,
     description: string,
     additionalImages?: AdditionalImage[],
-    category: CategoryType
+    category: CategoryType,
+    count?: number
 }
 
-export function ProductSlide (props: ProductSlideI){
+export function ProductSlide(props: ProductSlideI) {
     const history = useHistory();
     const dispatch = useDispatch();
-    return(
+    return (
         <div className={styles.stockItem} style={{width: '100%'}}>
             <div className={styles.stockWrap}>
                 <img src={url(`files/${props.image}`)}/>
@@ -42,15 +43,23 @@ export function ProductSlide (props: ProductSlideI){
                     <div className={styles.stockHot}>
                         <Icon path={mdiFire} className={styles.stockIcon} size={1}/>
                         <div>
-                            Скидка {props.cost-props.stockCost}р !
+                            Скидка {props.cost - props.stockCost}р !
                         </div>
                     </div>
                     <div className={styles.stockActions}>
-                        <Button onClick={()=> dispatch(BasketActions.pushBasketAction(props))}
+                        <Button onClick={() => dispatch(BasketActions.pushBasketAction({
+                            category: props.category,
+                            cost: props.cost,
+                            description: props.description,
+                            id: props.id,
+                            image: props.image,
+                            stockCost: props.stockCost,
+                            title: props.title
+                        }))}
                                 content={'В корзину'}
                                 size={ButtonSize.SMALL}
                                 color={ButtonColor.GREEN}/>
-                        <Button onClick={()=> history.push(`${routes.products}/${props.id}`)}
+                        <Button onClick={() => history.push(`${routes.products}/${props.id}`)}
                                 content={'Перейти'}
                                 size={ButtonSize.SMALL}
                                 color={ButtonColor.BLUE}/>

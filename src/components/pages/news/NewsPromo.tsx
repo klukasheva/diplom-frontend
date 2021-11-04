@@ -1,8 +1,10 @@
 import * as React from 'react'
 import {FunctionComponent} from "react";
-import styles from './ArticlePromoStyles.module.sass'
-import {Tag} from "../../types";
-import {url} from "../../apiConfig";
+import styles from './NewsPromoStyles.module.sass'
+import {url} from "../../../apiConfig";
+import * as S from 'fp-ts/string'
+import {useHistory} from "react-router";
+import {routes} from "../../../routes";
 
 export interface ArticlePromoT {
     id: number,
@@ -11,11 +13,10 @@ export interface ArticlePromoT {
     author: string,
     content: string,
     image: string,
-    tags?: Tag[]
 }
 
-export const ArticlePromo: FunctionComponent<ArticlePromoT> = (props) => {
-
+export const NewsPromo: FunctionComponent<ArticlePromoT> = (props) => {
+    const history = useHistory();
     return (
         <article className={styles.promo}>
             <img src={url(`files/${props.image}`)}/>
@@ -32,15 +33,15 @@ export const ArticlePromo: FunctionComponent<ArticlePromoT> = (props) => {
                     </div>
                 </div>
                 <div className={styles.content}>
-                    {props.content}
+                    {S.slice(0, 300)(props.content)}...
                 </div>
-                {!!props.tags &&
-                <div className={styles.tags}>
-                    {props.tags.map(tag =>
-                        <div className={styles.tag} key={tag.id}>#{tag.name}</div>
-                    )}
+                <div
+                    className={styles.readMore}
+                    onClick={() => {
+                    history.push(`${routes.news}/${props.id}`)
+                }}>
+                    Читать новость...
                 </div>
-                }
             </div>
         </article>
     )

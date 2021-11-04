@@ -1,11 +1,15 @@
-import {ActionType, createAsyncAction} from "typesafe-actions";
+import {ActionType, createAction, createAsyncAction} from "typesafe-actions";
 import {ProductSlideI} from "../../components/slides/ProductSlide";
 
 
 export type CategoryType = {
     id: number,
-    title: string
+    title: string,
+    phoneNumber: string,
+    products: ProductSlideI[]
 }
+
+
 export const ProductActions = {
     getList: createAsyncAction(
         'product/GET_LIST_REQUEST',

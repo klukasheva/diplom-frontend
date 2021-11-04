@@ -21,8 +21,13 @@ export enum ButtonColor {
     ERROR,
     GOLD,
     GREEN,
-    BLUE
+    BLUE,
+    ERROR_BG,
+    GOLD_BG,
+    GREEN_BG,
+    BLUE_BG
 }
+
 
 export const Button: FunctionComponent<ButtonProps> = (props) => {
     const {onClick, content, alignSelf, size, color} = props;
@@ -35,7 +40,13 @@ export const Button: FunctionComponent<ButtonProps> = (props) => {
             [styles.GOLD]: color === ButtonColor.GOLD,
             [styles.ERROR]: color === ButtonColor.ERROR,
             [styles.GREEN]: color === ButtonColor.GREEN,
-            [styles.BLUE]: color === ButtonColor.BLUE
+            [styles.BLUE]: color === ButtonColor.BLUE,
+            [styles.ERROR_BG]: color === ButtonColor.ERROR_BG,
+            [styles.GOLD_BG]: color === ButtonColor.GOLD_BG,
+            [styles.GREEN_BG]: color === ButtonColor.GREEN_BG,
+            [styles.BLUE_BG]: color === ButtonColor.BLUE_BG,
+
+
         }
     )
     return (

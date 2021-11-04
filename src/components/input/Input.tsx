@@ -7,7 +7,8 @@ export interface InputI {
     type?: 'password' | 'text',
     placeholder?: string,
     value: string,
-    required: boolean
+    required: boolean,
+    color: 'white' | 'black'
 }
 
 export const Textarea: FunctionComponent<InputI> = (props) => {
@@ -16,11 +17,9 @@ export const Textarea: FunctionComponent<InputI> = (props) => {
            {props.required &&
            <span>*</span>
            }
-           <div className={styles.textareaTop}>
-               {props.placeholder}
-           </div>
             <textarea value={props.value}
                       required={props.required}
+                      placeholder={props.placeholder}
                       className={styles.textarea}
                       onChange={(event) => props.onChange(event.target.value)}/>
        </div>
@@ -37,6 +36,7 @@ export const Input: FunctionComponent<InputI> = (props) => {
                            type={props.type ?? 'text'}
                            value={props.value}
                            className={styles.input}
+                           style={{color: props.color}}
                            required={props.required}
                            onChange={(event) => props.onChange(event.target.value)}/>
                 </div>

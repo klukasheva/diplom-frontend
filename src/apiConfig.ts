@@ -4,7 +4,10 @@ export const config = {
     endpoints:{
         product: 'product',
         category: 'category',
-        news: 'news'
+        news: 'news',
+        tags: 'tags',
+        feedback: 'feedback',
+        order: 'order'
     }
 }
 

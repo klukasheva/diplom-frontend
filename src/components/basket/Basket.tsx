@@ -7,6 +7,8 @@ import {Button, ButtonColor, ButtonSize} from "../button/Button";
 import {useDispatch} from "react-redux";
 import {BasketActions} from "../../redux/basket/actions";
 import {url} from "../../apiConfig";
+import {useHistory} from "react-router";
+import {routes} from "../../routes";
 
 
 export interface BasketI{
@@ -15,6 +17,7 @@ export interface BasketI{
 }
 export const Basket = (props: BasketI) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const reducer = (previousValue:number,currentValue:ProductSlideI)=> previousValue + currentValue.stockCost;
     const total = props.orders.reduce(reducer,0)
     return(
@@ -64,13 +67,19 @@ export const Basket = (props: BasketI) => {
                         </div>
                         }
                         <div className={styles.buttons} style={{justifyContent: !!props.orders.length ? 'space-between' : 'center'}}>
-                            <Button onClick={()=>console.log('fewf')}
+                            <Button onClick={()=> {
+                                props.setCloseModal(false);
+                                history.push(routes.products)}
+                            }
                                     content={'Все товары'}
                                     size={ButtonSize.SMALL}
                                     color={ButtonColor.GOLD}
                             />
                             {!!props.orders.length &&
-                            <Button onClick={()=>console.log('fewf')}
+                            <Button onClick={()=> {
+                                props.setCloseModal(false);
+                                history.push(routes.order);
+                            }}
                                     content={'Оформить заказ'}
                                     size={ButtonSize.SMALL}
                                     color={ButtonColor.BLUE}

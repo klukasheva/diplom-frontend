@@ -26,7 +26,9 @@ export const HeaderMobile:FunctionComponent = () => {
                 <div className={styles.links}>
                     {MENU_ITEMS.map((item,index)=>
                         <Link to={item.link} key={item.key}>
-                            {item.key}
+                            <div onClick={()=> setMobileNavigations(false)}>
+                                {item.key}
+                            </div>
                         </Link>
                     )}
                 </div>

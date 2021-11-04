@@ -6,17 +6,17 @@ import {CategoryActions, ProductActions} from "./product/actions";
 import {BasketActions} from "./basket/actions";
 import {fetchCategoryList, fetchProductEpic, fetchProductsEpic} from "./product/epic";
 import {CategoryReducer, ProductReducer} from "./product/reducers";
-import {ImageModalAction, ImageModalReducer} from "./image";
+import {ImageModalAction, ImageModalReducer, ProductModalAction, ProductModalReducer} from "./modal";
 import {NewsReducer} from "./news/reducers";
 import {NewsActions} from "./news/actions";
-import {getNewsEpic, getNewsListEpic} from "./news/epic";
+import {getNewsEpic, getNewsListEpic } from "./news/epic";
 
 export const rootEpic = combineEpics(
     fetchProductsEpic,
     fetchProductEpic,
     fetchCategoryList,
     getNewsListEpic,
-    getNewsEpic
+    getNewsEpic,
 );
 
 export const rootReducer = combineReducers({
@@ -24,7 +24,8 @@ export const rootReducer = combineReducers({
     ProductReducer,
     ImageModalReducer,
     CategoryReducer,
-    NewsReducer
+    NewsReducer,
+    ProductModalReducer
 });
 
 export const rootActions = {
@@ -32,7 +33,8 @@ export const rootActions = {
     basket: BasketActions,
     image: ImageModalAction,
     category: CategoryActions,
-    news: NewsActions
+    news: NewsActions,
+    productModal: ProductModalAction
 }
 
 export type RootActionType = ActionType<typeof rootActions>

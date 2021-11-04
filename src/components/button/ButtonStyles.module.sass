@@ -5,12 +5,13 @@
   display: flex
   justify-content: center
   align-items: center
-  background: white
+  background: initial
   cursor: pointer
+  border: none
   &.DEFAULT_BUTTON
     min-width: 250px
     padding: 13px 10px
-    font-size: 1.3em
+    font-size: 1.3em !important
     color: $gold
     border: 1px solid $gold
     &:hover
@@ -19,12 +20,12 @@
   &.DEFAULT
     min-width: 250px
     padding: 13px 10px
-    font-size: 1.3em
+    font-size: 1.3em !important
 
   &.SMALL
     width: 100px
     padding: 8px 6px
-    font-size: 1.1em
+    font-size: 1.1em !important
 
   &.GOLD
     color: $gold
@@ -50,3 +51,15 @@
     &:hover
       color: white
       background: $blue
+  &.ERROR_BG
+    color: white
+    background: $red
+  &.GREEN_BG
+    color: white
+    background: $green
+  &.BLUE_BG
+    color: white
+    background: $blue
+  &.GOLD_BG
+    color: white
+    background: $gold

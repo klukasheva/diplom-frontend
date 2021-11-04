@@ -1,5 +1,5 @@
 import { mergeMap, map , catchError, filter, of } from "rxjs";
-import {CategoryActions, ProductActions} from "./actions";
+import {CategoryActions, CategoryType, ProductActions} from "./actions";
 import { ajax } from 'rxjs/ajax';
 import {config, url} from "../../apiConfig";
 import {RootEpicType,} from "../index";
@@ -25,7 +25,7 @@ export const fetchProductEpic: RootEpicType = action$ => action$.pipe(
 
 export const fetchCategoryList : RootEpicType = action$ => action$.pipe(
     filter(isActionOf(CategoryActions.request)),
-    mergeMap(()=>ajax.get<CategoryI[]>(url(`${config.endpoints.category}`)).pipe(
+    mergeMap(()=>ajax.get<CategoryType[]>(url(`${config.endpoints.category}`)).pipe(
         map(res=> CategoryActions.success(res.response)),
         catchError(()=>of(CategoryActions.failure(null)))
     )
