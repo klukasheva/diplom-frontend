@@ -5,11 +5,29 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import configureStore from "./configureStore";
 import {BrowserRouter} from 'react-router-dom';
+import {ProductSlideI} from "./components/slides/ProductSlide";
+import {BasketActions} from "./redux/basket/actions";
+
+
+export const store = configureStore()
+
+const basketData = localStorage.getItem('basket')
+if(basketData){
+    try {
+        const data: ProductSlideI[] = JSON.parse(basketData)
+        data.forEach(item=>
+            store.dispatch(BasketActions.pushBasketAction(item))
+        )
+    }
+    catch (e) {
+        console.error('localstorage is not defined')
+    }
+}
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Provider store={configureStore()}>
+            <Provider store={store}>
                 <App/>
             </Provider>
         </BrowserRouter>

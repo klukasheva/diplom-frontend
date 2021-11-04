@@ -2,7 +2,7 @@ import * as React from 'react'
 import styles from './ProductStyles.module.sass';
 import {url} from "../../../apiConfig";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {ProductActions} from "../../../redux/product/actions";
 import {RootState} from "../../../redux";
 import {useHistory, useParams} from "react-router";
@@ -15,7 +15,8 @@ import {ProductSlideI} from "../../slides/ProductSlide";
 import {routes} from "../../../routes";
 
 export const Product = (props:{data?: ProductSlideI } ) => {
-    const product = useSelector((state: RootState) => state.ProductReducer.product)
+    const product = useSelector((state: RootState) => state.ProductReducer.product);
+    const basketStorage = localStorage.getItem('basket');
     const dispatch = useDispatch();
     const isMobile = useIsMobile();
     const history = useHistory();
@@ -31,7 +32,11 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                         <div className={styles.title}>
                             {props.data.title}
                         </div>
-                           <img src={url((`files/${props.data.image}`))} className={styles.mainImage}/>
+                           <img src={url((`files/${props.data.image}`))} className={styles.mainImage} onClick={()=> dispatch(ImageModalAction({
+                               link: props.data?.image,
+                               title: props.data?.title,
+                               isOpen: true
+                           }))}/>
                         <div className={styles.additionalImages}>
                             {props.data.additionalImages?.map(image =>
                                 <img src={url((`files/${image.link}`))}
@@ -63,7 +68,13 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                                         alignSelf={isMobile ? 'center' : 'start'}
                                         size={ButtonSize.DEFAULT}
                                         color={ButtonColor.GREEN_BG}/>
-                                <Button onClick={() => dispatch(BasketActions.pushBasketAction(props.data as ProductSlideI))}
+                                <Button onClick={() => {
+                                    dispatch(BasketActions.pushBasketAction(props.data as ProductSlideI));
+                                    if(basketStorage){
+                                        localStorage.setItem('basket', JSON.stringify([...JSON.parse(basketStorage),props.data]))
+                                    }
+                                }
+                                }
                                         content={'В корзину'}
                                         alignSelf={isMobile ? 'center' : 'start'}
                                         size={ButtonSize.DEFAULT}
@@ -78,7 +89,11 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                         <div className={styles.title}>
                             {product.title}
                         </div>
-                        <img src={url((`files/${product.image}`))} className={styles.mainImage}/>
+                        <img src={url((`files/${product.image}`))} className={styles.mainImage} onClick={()=> dispatch(ImageModalAction({
+                            link: product.image,
+                            title: product.title,
+                            isOpen: true
+                        }))}/>
                         <div className={styles.additionalImages}>
                             {product.additionalImages?.map(image =>
                                 <img src={url((`files/${image.link}`))}
@@ -104,7 +119,13 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                                     {product.stockCost} руб
                                 </div>
                             </div>
-                            <Button onClick={() => dispatch(BasketActions.pushBasketAction(product))}
+                            <Button onClick={() => {
+                                dispatch(BasketActions.pushBasketAction(product));
+                                if(basketStorage){
+                                    localStorage.setItem('basket', JSON.stringify([...JSON.parse(basketStorage),product]))
+                                }
+                            }
+                            }
                                     content={'В корзину'}
                                     alignSelf={isMobile ? 'center' : 'start'}
                                     size={ButtonSize.DEFAULT}

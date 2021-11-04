@@ -41,10 +41,10 @@ export const Basket = (props: BasketI) => {
                                 </div>
                                 <div className={styles.costBlock}>
                                     <div className={styles.cost}>
-                                        {order.cost}
+                                        {order.cost}р
                                     </div>
                                     <div className={styles.stockCost}>
-                                        {order.stockCost}
+                                        {order.stockCost}р
                                     </div>
                                 </div>
                                 <Button onClick={()=> dispatch(BasketActions.removeFromBasketAction(index))}

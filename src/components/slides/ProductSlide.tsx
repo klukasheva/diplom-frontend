@@ -24,6 +24,7 @@ export interface ProductSlideI {
 }
 
 export function ProductSlide(props: ProductSlideI) {
+    const basketStorage = localStorage.getItem('basket');
     const history = useHistory();
     const dispatch = useDispatch();
     return (
@@ -38,7 +39,7 @@ export function ProductSlide(props: ProductSlideI) {
                         {props.cost}р
                     </div>
                     <div className={styles.stockCost}>
-                        {props.stockCost}
+                        {props.stockCost}р
                     </div>
                     <div className={styles.stockHot}>
                         <Icon path={mdiFire} className={styles.stockIcon} size={1}/>
@@ -47,7 +48,7 @@ export function ProductSlide(props: ProductSlideI) {
                         </div>
                     </div>
                     <div className={styles.stockActions}>
-                        <Button onClick={() => dispatch(BasketActions.pushBasketAction({
+                        <Button onClick={() => { dispatch(BasketActions.pushBasketAction({
                             category: props.category,
                             cost: props.cost,
                             description: props.description,
@@ -55,7 +56,19 @@ export function ProductSlide(props: ProductSlideI) {
                             image: props.image,
                             stockCost: props.stockCost,
                             title: props.title
-                        }))}
+                        }))
+                            if(basketStorage){
+                                localStorage.setItem('basket', JSON.stringify([...JSON.parse(basketStorage), {
+                                    category: props.category,
+                                    cost: props.cost,
+                                    description: props.description,
+                                    id: props.id,
+                                    image: props.image,
+                                    stockCost: props.stockCost,
+                                    title: props.title
+                                }]))
+                            }
+                        }}
                                 content={'В корзину'}
                                 size={ButtonSize.SMALL}
                                 color={ButtonColor.GREEN}/>

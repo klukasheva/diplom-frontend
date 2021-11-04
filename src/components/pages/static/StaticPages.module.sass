@@ -5,8 +5,9 @@
   justify-content: center
   align-items: center
   flex-direction: column
-  padding: 0px 15%
+  padding: 0 15%
   box-sizing: border-box
+  height: 70vh
   .history
     display: flex
     justify-content: center
@@ -32,13 +33,18 @@
   align-items: center
   min-height: 100vh
   .leadersItem
+    width: 500px
     display: flex
+    justify-content: center
+    align-items: center
     flex-direction: column
     border-top: 2px solid $gold
     border-bottom: 2px solid $gold
-    padding: 10px
+    padding: 25px 0
     box-sizing: border-box
     position: relative
+    @media screen and (max-width: $mobileMax)
+      width: 100%
     &:before
       content: ' '
       width: 2px

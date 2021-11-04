@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Header} from "./components/header/Header";
 import './RootStyles.sass'
 import {mdiCartMinus} from '@mdi/js';
@@ -28,8 +28,7 @@ function App() {
     const orders = useSelector((state: RootState) => state.BasketReducer);
     const showImage = useSelector((state:RootState) => state.ImageModalReducer.isOpen);
     const {isMobile} = useIsMobile();
-    const showProductModal = useSelector((state:RootState)=> state.ProductModalReducer.isOpen)
-
+    const showProductModal = useSelector((state:RootState)=> state.ProductModalReducer.isOpen);
     return (
         <div className="App">
             {showImage &&
@@ -75,7 +74,6 @@ function App() {
                    <Route path={routes.placement} component={Placement}/>
                </Switch>
             </div>
-
             <Footer/>
             {isMobile && !showBasket &&
             <BasketPanelMobile ordersLength={orders.length} setShowBasket={setShowBasket}/>

@@ -28,7 +28,7 @@ export const ProductList = () => {
 
     useEffect(() => {
         setCurrentCategory(+params.getAll('category')[0])
-    }, [])
+    }, [params.getAll('category')[0]])
 
     return (
         <div className={styles.productList}>
@@ -45,7 +45,7 @@ export const ProductList = () => {
                 :
                 <>
                     {products.map(item =>
-                            <Product data={item}/>
+                            <Product data={item} key={item.id}/>
                     )}
                 </>
             }

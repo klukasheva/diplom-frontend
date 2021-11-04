@@ -18,6 +18,9 @@ export const NewsPage = () => {
     return(
         <div className={styles.pageWrapper}>
             <div className={styles.page}>
+                <div className={styles.author}>
+                    &copy; {news.author}
+                </div>
                 <div className={styles.titleBlock}>
                     <div className={styles.title}>
                         {news.title}
@@ -29,9 +32,6 @@ export const NewsPage = () => {
                 <img src={url((`files/${news.image}`))}/>
                 <div className={styles.content}>
                     {news.content}
-                </div>
-                <div className={styles.author}>
-                    &copy; {news.author}
                 </div>
             </div>
         </div>

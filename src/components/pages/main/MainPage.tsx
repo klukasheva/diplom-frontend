@@ -127,7 +127,7 @@ export const MainPage = () => {
                         Новости
                     </div>
                     <div className={styles.articles}>
-                        {takeLeft(15)(articles).map(article =>
+                        {takeLeft(5)(articles).map(article =>
                             <NewsPromo {...article} key={article.id}/>
                         )}
                     </div>

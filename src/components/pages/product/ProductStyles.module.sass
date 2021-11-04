@@ -11,7 +11,7 @@
   background: rgba(0, 0, 0, .5)
   .modal
     display: flex
-    width: 40%
+    width: 45%
     position: fixed
     top: 25%
     left: 30%
@@ -21,9 +21,10 @@
     box-sizing: border-box
     padding: 20px 5%
     @media screen and (max-width: $mobileMax)
-      top: 20%
+      top: 0
       left: 0
       width: 100%
+      height: calc(100vh - 65px) !important
     .modalHeader
       display: flex
       justify-content: space-between
@@ -35,7 +36,6 @@
       height: 100%
       width: 100% !important
     @media screen and (max-width: 1366px)
-      width: 500px
       height: 400px
     .select
       border: 1px solid $borderBottom
@@ -70,12 +70,14 @@
           img
             width: 20%
             height: 50px
+            object-fit: cover
           .productItemCost
             display: flex
             justify-content: flex-start
             flex-direction: column
             align-items: flex-start
             width: 15%
+            padding: 0 10px
 
 
 .productList
@@ -93,6 +95,10 @@
     justify-content: center
     top: 40%
     position: absolute
+    @media screen and (max-width: $mobileMax)
+      font-size: 1.2em
+      width: 70%
+      left: 20%
   .categoryList
     display: flex
     width: 100%
@@ -103,6 +109,7 @@
       box-sizing: border-box
       justify-content: space-between
       div
+        margin-top: 10px
         margin-left: 5px !important
     div
       margin-left: 20px
@@ -148,6 +155,7 @@
       height: 300px
       object-fit: cover
       margin-top: 15px
+      cursor: pointer
       @media screen and (max-width: $mobileMax)
         height: 200px
     .additionalImages
@@ -168,6 +176,7 @@
       margin-top: 20px
       font-weight: 700
       word-wrap: break-word
+      font-size: 1.3em
       margin-bottom: 20px
     .price
       border-top: 1px solid #dedede
@@ -193,6 +202,7 @@
         display: flex
         justify-content: space-between
         @media screen and (max-width: $HD)
+          margin-top: 10px
           flex-direction: column
           button
             margin-top: 5px
