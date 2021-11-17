@@ -7,13 +7,13 @@ export const LeadersPage = () => {
         <div className={styles.leaders}>
             <div className={styles.leadersItem}>
                 <div className={styles.leaderName}>
-                    Кулак Александр Иванович
+                    Гончаров Павел Александрович
                 </div>
                 <div className={styles.leaderWork}>
-                    Председатель правления облпотребсоюза
+                    Директор Рогачевского филиала
                 </div>
                 <div className={styles.leaderPhone}>
-                    контактный телефон:(8 0232) 50-61-73
+                    контактный телефон:(8 02339) 3-70-58
                 </div>
             </div>
             <div className={styles.leadersItem}>

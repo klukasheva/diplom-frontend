@@ -11,16 +11,16 @@ export const Footer: FunctionComponent = (props) => {
                 </div>
                 <div className={styles.footerBlockContent}>
                     <span className={styles.footerBlockContentItem}>
-                        УНП 400002435
+                        УНП 400158558
                     </span>
                     <span className={styles.footerBlockContentItem}>
-                        246050, г. Гомель, ул. Гагарина, 59
+                        247673, г. Рогачев, ул. Володарского, 90
                     </span>
                     <span className={styles.footerBlockContentItem}>
-                        Тел.: 8 0232 50-61-73
+                        Тел.: 8 02339 3-70-58
                     </span>
                     <span className={styles.footerBlockContentItem}>
-                        E-mail: gomops@mail.ru
+                        E-mail: raiporog2016@mail.ru
                     </span>
                 </div>
             </div>
