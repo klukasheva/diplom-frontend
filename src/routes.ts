@@ -6,6 +6,7 @@ export const routes = {
     leaders: '/leaders',
     news: '/news',
     placement: '/placement',
-    order: '/order'
+    order: '/order',
+    vacancy: '/vacancy'
 
 }

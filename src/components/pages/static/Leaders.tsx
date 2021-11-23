@@ -1,16 +1,17 @@
 import * as React from 'react'
 import styles from './StaticPages.module.sass'
-
+import leader from '../../../static/images/leader.jpg'
 
 export const LeadersPage = () => {
     return(
         <div className={styles.leaders}>
             <div className={styles.leadersItem}>
                 <div className={styles.leaderName}>
-                    Кулак Александр Иванович
+                    Гончаров Павел Александрович
                 </div>
+                <img src={leader}/>
                 <div className={styles.leaderWork}>
-                    Председатель правления облпотребсоюза
+                    Директор Рогачевского филиала
                 </div>
                 <div className={styles.leaderPhone}>
                     контактный телефон:(8 0232) 50-61-73
