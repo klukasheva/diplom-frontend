@@ -18,35 +18,46 @@ export const LeadersPage = () => {
             </div>
             <div className={styles.leadersItem}>
                 <div className={styles.leaderName}>
-                    Коржова Ольга Владимировна
+                    Евдокимова Наталья Леонидовна
                 </div>
                 <div className={styles.leaderWork}>
-                    Первый заместитель председателя правления
+                    Заместитель директора Рогачевского филиала
                 </div>
                 <div className={styles.leaderPhone}>
-                    контактный телефон:(8 0232) 51-71-41
+                    контактный телефон:(8 02339) 3-70-94
                 </div>
             </div>
             <div className={styles.leadersItem}>
                 <div className={styles.leaderName}>
-                    Петрукович Людмила Михайловна
+                  Стрелков Алексей Константинович
                 </div>
                 <div className={styles.leaderWork}>
-                    Заместитель председателя правления
+                    Начальник сектора контрольно-инвентаризационной работы
                 </div>
                 <div className={styles.leaderPhone}>
-                    контактный телефон:(8 0232) 50-61-54
+                    контактный телефон:(8 02339) 3-44-72
                 </div>
             </div>
             <div className={styles.leadersItem}>
                 <div className={styles.leaderName}>
-                    Короткевич Светлана Ивановна
+                   Леонова Ольга Михайловна
                 </div>
                 <div className={styles.leaderWork}>
-                    Заместитель председателя правления
+                    И. О. Главного бухгалтера
                 </div>
                 <div className={styles.leaderPhone}>
-                    контактный телефон: (8 0232) 50-61-37
+                    контактный телефон:(8 02339) 3-42-23
+                </div>
+            </div>
+            <div className={styles.leadersItem}>
+                <div className={styles.leaderName}>
+                    Харченко Владимир Николаевич
+                </div>
+                <div className={styles.leaderWork}>
+                    Начальник отдела заготовок, промышленности и ВЭД
+                </div>
+                <div className={styles.leaderPhone}>
+                    контактный телефон: (8 02339) 3-41-46
                 </div>
             </div>
             <div className={styles.leadersItem}>

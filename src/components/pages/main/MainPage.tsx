@@ -76,7 +76,7 @@ export const MainPage = () => {
             <div className={styles.main_page_content_wrapper}>
                 <div className={styles.mainPage_title}>
                     <div className={styles.main_page_title_text}>
-                        Рогачевское областное потребительское общество
+                        Рогачевский филиал Гомельского областного потребительского общества
                     </div>
                     <div className={styles.main_page_title_description}>
                         Работа нашего филиала охватывает такие сферы экономики, как :
