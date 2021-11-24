@@ -20,5 +20,9 @@ export const MENU_ITEMS = [
         key: 'Наш филиал',
         link: '/placement'
     },
+    {
+        key: 'Вакансии',
+        link: '/vacancy'
+    }
 ]
 

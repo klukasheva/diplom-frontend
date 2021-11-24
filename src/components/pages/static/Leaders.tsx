@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styles from './StaticPages.module.sass'
-
+import leader from '../../../static/images/leader.jpg'
 
 export const LeadersPage = () => {
     return(
@@ -9,6 +9,7 @@ export const LeadersPage = () => {
                 <div className={styles.leaderName}>
                     Гончаров Павел Александрович
                 </div>
+                <img src={leader}/>
                 <div className={styles.leaderWork}>
                     Директор Рогачевского филиала
                 </div>

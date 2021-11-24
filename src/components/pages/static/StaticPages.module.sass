@@ -43,8 +43,14 @@
     padding: 25px 0
     box-sizing: border-box
     position: relative
+    img
+      width: 400px
+      height: 300px
+      object-fit: contain
     @media screen and (max-width: $mobileMax)
       width: 100%
+      img
+        width: 80%
     &:before
       content: ' '
       width: 2px

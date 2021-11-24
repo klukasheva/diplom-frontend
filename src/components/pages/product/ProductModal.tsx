@@ -49,20 +49,6 @@ export const ProductModal: FunctionComponent = () => {
                                     {cat.phoneNumber}
                                 </div>
                             </div>
-                            <div className={styles.categoryProducts}>
-                                {takeLeft(3)(cat.products).map(product=>
-                                    <div className={styles.productItem}>
-                                        <img src={url((`files/${product.image}`))}/>
-                                        <div className={styles.productItemCost}>
-                                            <div>{product.title}</div>
-                                            <div>
-                                                {product.stockCost}р
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                )}
-                            </div>
                         </div>
                     )}
                 </div>

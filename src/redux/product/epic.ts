@@ -5,7 +5,6 @@ import {config, url} from "../../apiConfig";
 import {RootEpicType,} from "../index";
 import {isActionOf} from "typesafe-actions";
 import {ProductSlideI} from "../../components/slides/ProductSlide";
-import {CategoryI} from "../../components/pages/product/CategoryTag";
 
 export const fetchProductsEpic:RootEpicType = action$ => action$.pipe(
     filter(isActionOf(ProductActions.getList.request)),
