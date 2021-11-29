@@ -1,0 +1,28 @@
+@import '../../../Variables'
+
+.navlinksPage
+  min-height: 70vh
+  display: flex
+  justify-content: center
+  align-items: center
+  div
+    padding: 30px
+    border-top: 2px solid $gold
+    border-bottom: 2px solid $gold
+    max-width: 40%
+    &:before
+      content: ' '
+      width: 2px
+      background: $gold
+      height: 30%
+      position: absolute
+      top: 0
+      left: 0
+    &:after
+      content: ' '
+      width: 2px
+      background: $gold
+      height: 30%
+      position: absolute
+      bottom: 0
+      right: 0

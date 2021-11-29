@@ -8,7 +8,8 @@ export const config = {
         tags: 'tags',
         feedback: 'feedback',
         order: 'order',
-        vacansy: 'vacansy'
+        vacansy: 'vacansy',
+        navlinks: 'navlinks'
     }
 }
 

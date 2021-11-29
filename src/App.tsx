@@ -23,6 +23,7 @@ import {Order} from "./components/pages/order/Order";
 import {LeadersPage} from "./components/pages/static/Leaders";
 import {Placement} from "./components/pages/static/Placement";
 import {VacancyList} from "./components/pages/vacancy/VacancyList";
+import {Navlinks} from "./components/pages/navlinks/Navlinks";
 
 function App() {
     const [showBasket, setShowBasket] = useState(false);
@@ -74,6 +75,7 @@ function App() {
                    <Route path={routes.leaders} component={LeadersPage}/>
                    <Route path={routes.placement} component={Placement}/>
                    <Route path={routes.vacancy} component={VacancyList}/>
+                   <Route path={`${routes.navlinks}/:id`} component={Navlinks}/>
                </Switch>
             </div>
             <Footer/>

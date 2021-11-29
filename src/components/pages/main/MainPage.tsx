@@ -19,6 +19,7 @@ import {routes} from "../../../routes";
 import {ProductModalAction} from "../../../redux/modal";
 import {useSetState} from "react-use";
 import {config, url} from "../../../apiConfig";
+import { Link } from 'react-router-dom';
 
 const settings = {
     dots: false,
@@ -48,6 +49,17 @@ export const MainPage = () => {
     const history = useHistory();
     const [feedbackData, setFeedbackData] = useSetState({username: '', phoneNumber: '', text: ''})
     const [feedbackMessage, setFeedbackMessage] = useState<{ context: string, message: string }>()
+    const [links,setLinks] = useState<{id:number, title: string,description: string}[]>([]);
+
+    const getLinks = async () => {
+        await fetch(url(`${config.endpoints.navlinks}`)).then(res=>{
+           return res.json()
+        }).then((data: any)=> setLinks(data))
+    }
+
+    useEffect(()=>{
+       getLinks();
+    },[])
 
     const submit =  async () => {
         try {
@@ -83,24 +95,13 @@ export const MainPage = () => {
                     </div>
                     <div>
                         <ul>
-                            <li>
-                                Торговлю
-                            </li>
-                            <li>
-                                Общественное питание
-                            </li>
-                            <li>
-                                Промышленность
-                            </li>
-                            <li>
-                                Заготовительную и внешнеэкономическую деятельность
-                            </li>
-                            <li>
-                                Транспорт
-                            </li>
-                            <li>
-                                Услуги и строительство
-                            </li>
+                            {links.map(link=>
+                                <li>
+                                    <Link to={`${routes.navlinks}/${link.id}`}>
+                                        {link.title}
+                                    </Link>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 </div>
