@@ -7,6 +7,7 @@ export const routes = {
     news: '/news',
     placement: '/placement',
     order: '/order',
-    vacancy: '/vacancy'
+    vacancy: '/vacancy',
+    navlinks: '/navlinks'
 
 }
