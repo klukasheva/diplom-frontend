@@ -18,12 +18,13 @@ export const Product = (props:{data?: ProductSlideI } ) => {
     const product = useSelector((state: RootState) => state.ProductReducer.product);
     const basketStorage = localStorage.getItem('basket');
     const dispatch = useDispatch();
-    const isMobile = useIsMobile();
+    const {isMobile} = useIsMobile();
     const history = useHistory();
     const {id} = useParams<{ id: string }>();
     useEffect(() => {
        !props.data && dispatch(ProductActions.getProduct.request({id:+id}))
     }, [dispatch])
+
     return (
         <>
             {props.data ?
@@ -32,7 +33,7 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                         <div className={styles.title}>
                             {props.data.title}
                         </div>
-                           <img src={url((`files/${props.data.image}`))} className={styles.mainImage} onClick={()=> dispatch(ImageModalAction({
+                           <img src={url((`files/${props.data.image}`))} className={styles.mainImage} onClick={()=> !isMobile && dispatch(ImageModalAction({
                                link: props.data?.image,
                                title: props.data?.title,
                                isOpen: true
@@ -42,7 +43,7 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                                 <img src={url((`files/${image.link}`))}
                                      key={image.id}
                                      className={styles.additionalImage}
-                                     onClick={() => dispatch(ImageModalAction({
+                                     onClick={() => !isMobile && dispatch(ImageModalAction({
                                          link: image.link,
                                          title: props.data?.title,
                                          isOpen: true
@@ -89,7 +90,7 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                         <div className={styles.title}>
                             {product.title}
                         </div>
-                        <img src={url((`files/${product.image}`))} className={styles.mainImage} onClick={()=> dispatch(ImageModalAction({
+                        <img src={url((`files/${product.image}`))} className={styles.mainImage} onClick={()=> !isMobile && dispatch(ImageModalAction({
                             link: product.image,
                             title: product.title,
                             isOpen: true
@@ -99,7 +100,7 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                                 <img src={url((`files/${image.link}`))}
                                      key={image.id}
                                      className={styles.additionalImage}
-                                     onClick={() => dispatch(ImageModalAction({
+                                     onClick={() => !isMobile && dispatch(ImageModalAction({
                                          link: image.link,
                                          title: product.title,
                                          isOpen: true
