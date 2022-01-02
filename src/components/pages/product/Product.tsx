@@ -21,6 +21,7 @@ export const Product = (props:{data?: ProductSlideI } ) => {
     const {isMobile} = useIsMobile();
     const history = useHistory();
     const {id} = useParams<{ id: string }>();
+
     useEffect(() => {
        !props.data && dispatch(ProductActions.getProduct.request({id:+id}))
     }, [dispatch])
