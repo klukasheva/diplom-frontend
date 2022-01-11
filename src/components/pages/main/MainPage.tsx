@@ -107,7 +107,7 @@ export const MainPage = () => {
                 </div>
                 <div className={styles.stocks}>
                     <div className={styles.stockTitle}>Акции и новинки</div>
-                    {slides.length > 0 &&
+                    {slides?.length > 0 &&
                     <Slider {...settings}>
                         {slides.map(slide =>
                             <ProductSlide {...slide} key={slide.id}/>
