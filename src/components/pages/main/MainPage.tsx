@@ -45,7 +45,7 @@ const settings = {
 export const MainPage = () => {
     const dispatch = useDispatch();
     const articles = useSelector((state: RootState) => state.NewsReducer.list);
-    const slides = useSelector((state: RootState) => state.ProductReducer.productList);
+    const slides = useSelector((state: RootState) => state.ProductReducer.productList.filter(product => product.cost > product.stockCost));
     const history = useHistory();
     const [feedbackData, setFeedbackData] = useSetState({username: '', phoneNumber: '', text: ''})
     const [feedbackMessage, setFeedbackMessage] = useState<{ context: string, message: string }>()
@@ -105,17 +105,17 @@ export const MainPage = () => {
                         </ul>
                     </div>
                 </div>
-                <div className={styles.stocks}>
-                    <div className={styles.stockTitle}>Акции и новинки</div>
-                    {slides?.length > 0 &&
-                    <Slider {...settings}>
-                        {slides.map(slide =>
-                            <ProductSlide {...slide} key={slide.id}/>
-                        )}
-                    </Slider>
-                    }
-                    <Button onClick={() => history.push(routes.products)} content={'Все товары'} alignSelf={'center'}/>
-                </div>
+                {
+                    slides?.length > 0 && <div className={styles.stocks}>
+                        <div className={styles.stockTitle}>Акции и новинки</div>
+                        <Slider {...settings}>
+                            {slides.map(slide =>
+                                <ProductSlide {...slide} key={slide.id}/>
+                            )}
+                        </Slider>
+                        <Button onClick={() => history.push(routes.products)} content={'Все товары'} alignSelf={'center'}/>
+                    </div>
+                }
                 <div className={styles.providers}>
                     <div>
                         Хотите предложить свои товары нам?

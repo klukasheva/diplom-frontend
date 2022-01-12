@@ -57,9 +57,11 @@ export const Product = (props:{data?: ProductSlideI } ) => {
                         <CategoryTag {...props.data.category} onClick={(id)=> history.push(`${routes.products}?category=${id}`)}/>
                         <div className={styles.price}>
                             <div className={styles.costs}>
-                                <div className={styles.cost}>
-                                    {props.data.cost} руб
-                                </div>
+                                {
+                                    props.data.cost > props.data.stockCost && <div className={styles.cost}>
+                                        {props.data.cost} руб
+                                    </div>
+                                }
                                 <div className={styles.stockCost}>
                                     {props.data.stockCost} руб
                                 </div>
