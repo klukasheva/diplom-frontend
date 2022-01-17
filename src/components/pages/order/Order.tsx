@@ -20,7 +20,8 @@ export type OrderType = {
     address: string,
     customerName: string,
     description: string
-    cost: number
+    cost: number,
+    status: boolean
 }
 
 
@@ -50,7 +51,8 @@ export const Order: FunctionComponent = () => {
         address: '',
         customerName: '',
         description: '',
-        cost: total
+        cost: total,
+        status: false
     });
 
     useEffect(() => {

@@ -47,7 +47,7 @@ export const MainPage = () => {
     const articles = useSelector((state: RootState) => state.NewsReducer.list);
     const slides = useSelector((state: RootState) => state.ProductReducer.productList);
     const history = useHistory();
-    const [feedbackData, setFeedbackData] = useSetState({username: '', phoneNumber: '', text: ''})
+    const [feedbackData, setFeedbackData] = useSetState({username: '', phoneNumber: '', text: '', status: false})
     const [feedbackMessage, setFeedbackMessage] = useState<{ context: string, message: string }>()
     const [links,setLinks] = useState<{id:number, title: string,description: string}[]>([]);
 
