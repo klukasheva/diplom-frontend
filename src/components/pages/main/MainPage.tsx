@@ -61,6 +61,7 @@ export const MainPage = () => {
        getLinks();
     },[])
 
+    console.log(feedbackData);
     const submit =  async () => {
         try {
             await fetch(url(`${config.endpoints.feedback}`), {
