@@ -27,6 +27,7 @@ export function ProductSlide(props: ProductSlideI) {
     const basketStorage = localStorage.getItem('basket');
     const history = useHistory();
     const dispatch = useDispatch();
+    const stock = props.cost - props.stockCost
     return (
         <div className={styles.stockItem} style={{width: '100%'}}>
             <div className={styles.stockWrap}>
@@ -44,7 +45,7 @@ export function ProductSlide(props: ProductSlideI) {
                     <div className={styles.stockHot}>
                         <Icon path={mdiFire} className={styles.stockIcon} size={1}/>
                         <div>
-                            Скидка {props.cost - props.stockCost}р !
+                            Скидка {stock.toFixed(2)} р !
                         </div>
                     </div>
                     <div className={styles.stockActions}>
